@@ -18,7 +18,7 @@ public class ArraysSimples {
 	static String hola[] = new String [4];
 	static int longitud=Array.getLength(hola);
 	static String resultado="";
-	
+	private String nombre = "Oscar Fernández";
 	
 	//Escribir los valores entre -10 y 10, en columna, empleando un bucle de tipo «for».
 	
@@ -27,11 +27,16 @@ public class ArraysSimples {
 			resultado = resultado + hola [i] + "\n";
 		}
 	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
 
 	public static void main(String[] args) {
 		ArraysSimples uno = new ArraysSimples();
 		uno.calcular();
 		System.out.println(resultado);
+		uno.getNombre();
 	}
 
 }
