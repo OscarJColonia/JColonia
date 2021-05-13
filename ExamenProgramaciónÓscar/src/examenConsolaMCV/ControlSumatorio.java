@@ -1,9 +1,9 @@
 package examenConsolaMCV;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-import app.Player;
-import app.PlayerRegistrationView;
+
 
 /**
  * Gestión de números «decimales»: recogida y visualización de la suma
@@ -30,16 +30,17 @@ public class ControlSumatorio {
 	 */
 	private Scanner in;
 
-	private ListaNúmeros conjunto;
+	private String conjunto;
 
 	private VistaMenúGeneral menúPrincipal;
+	
+	private VistaDatos datos;
 
 	public ControlSumatorio(Scanner in) {
 		this.in = in;
-		conjunto = new ListaNúmeros();
 	}
 
-	private void buclePrincipal() {
+	private void buclePrincipal() throws Throwable {
 		menúPrincipal = new VistaMenúGeneral(TÍTULO_MENÚ_PRINCIPAL, OPCIONES_MENÚ_PRINCIPAL, in);
 
 		int entrada = -1;
@@ -54,9 +55,9 @@ public class ControlSumatorio {
 			case 1: // Opción 1: Entrada datos
 				cargarSumando();
 				break;
-//			case 2: // Opción 2: Mostrar sumandos
-//				mostrarSumandos();
-//				break;
+			case 2: // Opción 2: Mostrar sumandos
+				mostrarSumandos();
+				break;
 //			case 3: // Opción 3: Mostrar suma
 //				mostrarSuma();
 //				break;
@@ -79,20 +80,20 @@ public class ControlSumatorio {
 	}
 	
 	   /**
-     * Añadir un nuevo jugador
+     * Añadir un nuevo sumando
+	 * @throws Throwable 
      */
-    public void cargarSumando() {
-        PlayerRegistrationView registrationView = new PlayerRegistrationView(this.in);
-        Player player = registrationView.getNewPlayer();
-        if(registrationView.confirmPlayer(player)){
-            registrationView.showText("Jugador registrado");
-            this.team.addPlayer(player);
-        }else{
-            registrationView.showText("Registro cancelado");
-        }
+    public void cargarSumando() throws Throwable {
+        datos = new VistaDatos("Valor", this.in);
+        conjunto = conjunto + datos.getNuevoNúmero();
     }
+    
+    public void mostrarSumandos() {
+      System.out.println(conjunto);
+    }
+    
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Throwable {
 		Scanner sc = new Scanner(System.in);
 
 		ControlSumatorio control = new ControlSumatorio(sc);

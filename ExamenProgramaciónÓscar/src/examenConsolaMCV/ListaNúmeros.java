@@ -202,6 +202,14 @@ public class ListaNúmeros {
 		return texto;
 	}
 
+	public String getLista() {
+		return toString();
+	}
+
+	public void setLista(ArrayList<Double> lista) {
+		this.lista = lista;
+	}
+
 	/**
 	 * Ensayo demostración de las funcionalidades de la clase.
 	 * 
