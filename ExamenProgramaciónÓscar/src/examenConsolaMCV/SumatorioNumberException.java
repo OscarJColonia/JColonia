@@ -1,4 +1,4 @@
-package jcolonia.daw2020.mayo;
+package examenConsolaMCV;
 
 /**
  * Excepción usada generalmente en la aplicación «Sumatorio MVC» cuando se

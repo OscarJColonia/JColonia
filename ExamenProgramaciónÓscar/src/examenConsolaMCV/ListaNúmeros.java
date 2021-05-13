@@ -1,4 +1,4 @@
-package jcolonia.daw2020.mayo;
+package examenConsolaMCV;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

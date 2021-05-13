@@ -1,4 +1,4 @@
-package jcolonia.daw2020.mayo;
+package examenConsolaMCV;
 
 import java.io.PrintStream;
 import java.util.Arrays;
@@ -159,4 +159,12 @@ public abstract class VistaGeneral {
 		mostrarMensaje("Pulse «Intro» para continuar");
 		in.nextLine();
 	}
+	
+	 public void showAlert(String alert) {
+	        out.printf("!!! %s%n", alert);
+	    }
+	 
+	 public int getNumber() {
+	        return in.nextInt();
+	    }
 }

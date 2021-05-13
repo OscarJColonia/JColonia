@@ -1,6 +1,9 @@
-package jcolonia.daw2020.mayo;
+package examenConsolaMCV;
 
 import java.util.Scanner;
+
+import app.Player;
+import app.PlayerRegistrationView;
 
 /**
  * Gestión de números «decimales»: recogida y visualización de la suma
@@ -17,7 +20,7 @@ public class ControlSumatorio {
 			"Restablecer" };
 
 	/**
-	 * Título de la aplicación. Se mostrará como encabezado del menú principal.
+	 * Título de la aplicación. Se mostrará como encabezado del menú principal.exam
 	 */
 	private static final String TÍTULO_MENÚ_PRINCIPAL = "Sumatorio";
 
@@ -48,9 +51,9 @@ public class ControlSumatorio {
 			case 0: // Salir
 				menúPrincipal.mostrarMensaje("¡¡¡A-D-I-O-S!!");
 				break;
-//			case 1: // Opción 1: Entrada datos
-//				cargarSumando();
-//				break;
+			case 1: // Opción 1: Entrada datos
+				cargarSumando();
+				break;
 //			case 2: // Opción 2: Mostrar sumandos
 //				mostrarSumandos();
 //				break;
@@ -70,10 +73,24 @@ public class ControlSumatorio {
 
 	private void ejecutarGenérico(int id) {
 		String mensaje;
-		mensaje = String.format("%n  [%03d] Ha elegido la opción %d: «%s»", VistaMenúGeneral.getNúmRespuestas(), id,
+		mensaje = String.format("%n  [%03d] Ha elegido la opción %d: «%s»", menúPrincipal.elegirOpción(), id,
 				OPCIONES_MENÚ_PRINCIPAL[id - 1]);
 		menúPrincipal.mostrarMensaje(mensaje);
 	}
+	
+	   /**
+     * Añadir un nuevo jugador
+     */
+    public void cargarSumando() {
+        PlayerRegistrationView registrationView = new PlayerRegistrationView(this.in);
+        Player player = registrationView.getNewPlayer();
+        if(registrationView.confirmPlayer(player)){
+            registrationView.showText("Jugador registrado");
+            this.team.addPlayer(player);
+        }else{
+            registrationView.showText("Registro cancelado");
+        }
+    }
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
